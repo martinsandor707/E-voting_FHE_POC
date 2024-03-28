@@ -28,7 +28,7 @@
     </Card.Content>
     <Card.Footer class="grid grid-flow gap-y-8 justify-center place-items-center">
         <a href="/login"><Button>Log in</Button></a>
-        or
+        <p>or</p>
         <a href="/votes"><Button>Check the votes</Button></a>
     </Card.Footer>
 </Card.Root>
