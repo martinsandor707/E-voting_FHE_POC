@@ -1,10 +1,11 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-    import Button from "$lib/components/ui/button/button.svelte";
+    import PasswordLoginForm from "$lib/components/auth/PasswordLoginForm.svelte";
     import * as Card from "$lib/components/ui/card";
-    import Input from "$lib/components/ui/input/input.svelte";
-    
-    export let data: PageData;
+    import { type LoginSchema } from '$lib/schema';
+    import { superForm, type Infer, type SuperValidated} from 'sveltekit-superforms';
+	import type { PageData } from "../$types";
+
+    export let data: PageData
 </script>
 <div class="flex justify-center items-center">
     <Card.Root>
@@ -13,23 +14,7 @@
             <Card.Description>If you're already registered</Card.Description>
         </Card.Header>
         <Card.Content>
-            <form method="GET" class="grid gap-y-4">
-                <Input
-                    name="email"
-                    autocomplete="off"
-                    type="email"
-                    placeholder="E-mail"
-                    required
-                />
-                <Input
-                    name="password"
-                    autocomplete="off"
-                    type="password"
-                    placeholder="Password"
-                    required
-                />
-                <Button>Sign in</Button>
-            </form>
+            <PasswordLoginForm data={data.form}></PasswordLoginForm>
         </Card.Content>
         <Card.Footer class="flex justify-center">
             <div>
