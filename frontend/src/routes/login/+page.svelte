@@ -1,12 +1,12 @@
 <script lang="ts">
     import PasswordLoginForm from "$lib/components/auth/PasswordLoginForm.svelte";
     import * as Card from "$lib/components/ui/card";
-    import { type LoginSchema } from '$lib/schema';
-    import { superForm, type Infer, type SuperValidated} from 'sveltekit-superforms';
 	import type { PageData } from "../$types";
+    import { superForm } from "sveltekit-superforms/client";
 
-    export let data: PageData
+    export let data:PageData
 </script>
+
 <div class="flex justify-center items-center">
     <Card.Root>
         <Card.Header class="text-center">
@@ -25,7 +25,7 @@
             <p class="text-muted-foreground">
                 You don't have an account?
             </p>
-            <p class="text-center">
+            <p class="text-center underline">
                 <a href="/register">Create one here</a>
             </p>
           </div>

@@ -4,6 +4,7 @@
 	  import { loginSchema, type LoginSchema } from '$lib/schema';
     import {superForm, type Infer, type SuperValidated} from 'sveltekit-superforms';
     import {zodClient} from 'sveltekit-superforms/adapters';
+    import SuperDebug from 'sveltekit-superforms';
     
     export let data: SuperValidated<Infer<LoginSchema>>;
 
@@ -12,8 +13,10 @@
     })
 
     const {form: formData, enhance } = form;
+
 </script>
 
+<!--<SuperDebug data={formData}/> -->
 <form method="POST" use:enhance>
     <Form.Field class="mb-3" {form} name="email">
       <Form.Control let:attrs>
@@ -37,5 +40,7 @@
         </Form.Control>
         <Form.FieldErrors/>
     </Form.Field>
-    <Form.Button>Login</Form.Button>
+    <div class="flex justify-center">
+        <Form.Button>Login</Form.Button>
+    </div>
   </form>

@@ -1,6 +1,9 @@
 <script lang="ts">
     import Button from "$lib/components/ui/button/button.svelte";
     import * as Card from "$lib/components/ui/card";
+     
+    export let data
+
 </script>
 <div class="grid grid-cols-6 gap-8">
     <div></div>
