@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15597443-4ff3-453f-bfa5-0dbb0119ac04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/e_voting/polls/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/e_voting/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/e_voting/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/polls/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/db_new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/db_new.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
