@@ -14,11 +14,12 @@ from django.contrib.sessions.backends.db import SessionStore
 
 @api_view(['GET', 'POST'])
 def index(request):
+    if 'visitedNr' not in request.session or request.session['visitedNr'] > 5:
+        request.session.flush()
+        request.session['visitedNr']=0
+    request.session['visitedNr']+=1
 
-    request.session.set_test_cookie()
-    s = SessionStore()
-    s.create()
-    return Response(f"Hi {s.session_key} ", status=status.HTTP_200_OK)
+    return Response(f"Hi {request.session['visitedNr']} ", status=status.HTTP_200_OK)
 
 
 @api_view(['GET', 'POST'])
@@ -64,7 +65,7 @@ def user_detail(request, id):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        User.objects.delete()
+        user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -78,7 +79,13 @@ def user_login(request):
         return Response('User not found!', status=status.HTTP_404_NOT_FOUND)
     if bcrypt.checkpw(data['password'].encode(), user.password.encode()):       #Need to convert both passwords to byte string for bcrypt
         s = SessionStore()
+        s['email'] = data['email']
         s.create()
         return Response({'sessionKey': s.session_key},status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def token_test(request):
+    email=SessionStore(session_key=request.headers['Authorization'])['email']
+    return Response(email, status=status.HTTP_200_OK)

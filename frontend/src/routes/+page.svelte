@@ -9,7 +9,11 @@
     <div></div>
     <Card.Root class="col-span-2 hover:border-green-500">
         <Card.Header>
-            <Card.Title>What do you want to showcase?</Card.Title>
+            {#if data.user!==""}
+                <Card.Title>Hello, {data.user}!</Card.Title>
+            {:else}
+                <Card.Title>What do you want to showcase?</Card.Title>
+            {/if}
         </Card.Header>
         <Card.Content>
             <p>Modern e-voting schemes almost always have at least one thing in common: 
