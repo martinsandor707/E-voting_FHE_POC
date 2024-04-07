@@ -35,11 +35,10 @@ def user_list(request):
             password = data['password'].encode()
             hashed = bcrypt.hashpw(password, bcrypt.gensalt())
             serializer = UserSerializer(data={'email': data['email'], 'password': hashed.decode()})
-            #return Response(f"{hashed}      {hashed.decode()}", status=status.HTTP_406_NOT_ACCEPTABLE)
             if serializer.is_valid():
                 serializer.save()
                 return Response(password, status=status.HTTP_201_CREATED)
-        return Response("Done goofed", status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response("User already exists", status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
 #Basic CRUD functionality
@@ -87,5 +86,5 @@ def user_login(request):
 
 @api_view(['GET'])
 def token_test(request):
-    email=SessionStore(session_key=request.headers['Authorization'])['email']
+    email=request.session['email']
     return Response(email, status=status.HTTP_200_OK)

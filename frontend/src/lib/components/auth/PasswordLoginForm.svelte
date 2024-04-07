@@ -19,7 +19,7 @@
 <!--<SuperDebug data={formData}/> -->
 <form method="POST" use:enhance>
     {#if $myMessage}
-    <p class="text-destructive-foreground bg-destructive rounded-lg mb-4 text-center">{$myMessage}</p>
+        <p class="text-destructive-foreground bg-destructive rounded-lg mb-4 text-center">{$myMessage}</p>
     {/if}
     <Form.Field class="mb-3" {form} name="email">
       <Form.Control let:attrs>

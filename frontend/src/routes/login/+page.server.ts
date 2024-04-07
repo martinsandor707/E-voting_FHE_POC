@@ -2,7 +2,7 @@ import type { PageServerLoad, Actions } from "./$types.js";
 import { fail, message, superValidate } from "sveltekit-superforms";
 import { loginSchema } from "$lib/schema";
 import { zod } from "sveltekit-superforms/adapters";
-
+import { redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async () => {
     return {
@@ -70,7 +70,8 @@ export const actions: Actions = {
         else{
             return message(form, errorMessage)
         }
-        return {form,}
+
+        redirect(307,'/')
 
     },
 };
