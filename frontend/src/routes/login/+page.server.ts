@@ -1,8 +1,7 @@
 import type { PageServerLoad, Actions } from "./$types.js";
-import { fail, superValidate } from "sveltekit-superforms";
+import { fail, message, superValidate } from "sveltekit-superforms";
 import { loginSchema } from "$lib/schema";
 import { zod } from "sveltekit-superforms/adapters";
-import { z } from "zod"
 
 
 export const load: PageServerLoad = async () => {
@@ -18,9 +17,11 @@ export const actions: Actions = {
             return fail(400, { form, })
         }
 
-        const URL="http://127.0.0.1:8000/polls/login"
-
+        const URL="http://127.0.0.1:8000/polls/login/"
+        let responseStatus=200
+        let errorMessage=''
         let sessionKey={}
+        //Sending login request to Django backend
         await fetch(URL,{
             method:'POST',
             headers: {
@@ -33,9 +34,11 @@ export const actions: Actions = {
             })
             .then(response =>{
                 if (!response.ok){
+                    responseStatus=response.status
                     throw new Error("Network response not OK")
                 }
-                return response.text()
+                console.log('Success: ' +response.status)
+                return response.text()  //Response is not JSON due to Django blackbox reasons. 
             })
             .then(data => {
                 console.log("This is data:" +data)
@@ -45,12 +48,28 @@ export const actions: Actions = {
                 console.error('There was a problem with the login request', error)
             });
 
-        console.log(sessionKey)
-        cookies.set("sessionKey", sessionKey.sessionKey, {path : "/"})
-        //console.log(form)
-        let username= form.data.email.split('@')[0]
-        //console.log(username)
-        cookies.set("user", username, {path : "/"})
+        if (responseStatus===200){
+            console.log(sessionKey)
+            cookies.set("sessionKey", sessionKey.sessionKey, {path : "/"})
+        }
+        else{
+            console.error('An error occurred!\nError code: '+responseStatus)
+            switch(responseStatus){
+                case 400:
+                case 404:
+                    errorMessage='Incorrect credentials'
+                    break
+                default:
+                    errorMessage='Something unexpected happened'
+            }
+        }
+        if (responseStatus===200){
+            let username= form.data.email.split('@')[0]
+            cookies.set("user", username, {path : "/"})
+        }
+        else{
+            return message(form, errorMessage)
+        }
         return {form,}
 
     },

@@ -12,9 +12,9 @@ import json
 import bcrypt
 from django.contrib.sessions.backends.db import SessionStore
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def index(request):
-    if 'visitedNr' not in request.session or request.session['visitedNr'] > 5:
+    if 'visitedNr' not in request.session or request.session['visitedNr'] > 4:
         request.session.flush()
         request.session['visitedNr']=0
     request.session['visitedNr']+=1
