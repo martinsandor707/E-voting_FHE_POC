@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15597443-4ff3-453f-bfa5-0dbb0119ac04" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/db_new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/db_new.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/routes/login/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/routes/login/+page.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/routes/votes/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/routes/votes/+page.server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

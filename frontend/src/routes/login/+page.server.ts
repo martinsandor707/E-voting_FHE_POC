@@ -50,7 +50,7 @@ export const actions: Actions = {
 
         if (responseStatus===200){
             console.log(sessionKey)
-            cookies.set("sessionKey", sessionKey.sessionKey, {path : "/"})
+            cookies.set("sessionKey", sessionKey.sessionKey, {path : "/",})
         }
         else{
             console.error('An error occurred!\nError code: '+responseStatus)

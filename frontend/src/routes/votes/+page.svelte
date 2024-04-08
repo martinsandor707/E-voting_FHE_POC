@@ -4,6 +4,7 @@
     import type { PageData } from './$types';
     
     export let data: PageData;
+    console.log(data)
 </script>
 
 <Card.Root class="col-span-2 hover:border-green-500">

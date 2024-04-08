@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse, JsonResponse
+from django.contrib.sessions.models import Session
 from rest_framework.response import Response
 
 from .models import User, Vote
@@ -83,11 +84,15 @@ def user_login(request):
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def token_test(request):
-    if 'email' in request.session:
+    data = json.loads(request.body)
+    print(data)
+    s = SessionStore(session_key=data['sessionKey'])    #Extremely Important!!!!!
+    s.load()
+    if 'email' in s:
         print(request.headers)
-        return Response({'answer': request.session['email']}, status=status.HTTP_200_OK)
+        return Response({'answer': s['email']}, status=status.HTTP_200_OK)
     else:
         print(request.headers)
         return Response(status=status.HTTP_400_BAD_REQUEST)

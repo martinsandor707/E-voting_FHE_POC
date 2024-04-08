@@ -3,8 +3,11 @@ import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({cookies}) => {
     const sessionKey = cookies.get('sessionKey')
+    const email = cookies.get('email')
+    let answer
     return {
-        "sessionKey":sessionKey
+        "sessionKey":sessionKey,
+        "answer":email
     };
 }) satisfies PageServerLoad;
 
@@ -17,11 +20,13 @@ export const actions: Actions = {
         let answer=""
         //Sending sessionKey cookie to Django backend
         await fetch(URL,{
-            method:'GET',
+            method:'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: "include",
+            body: JSON.stringify({
+                sessionKey: sessionKey
+            })
             })
             .then(response =>{
                 if (!response.ok){
@@ -38,6 +43,6 @@ export const actions: Actions = {
                 console.error('There was a problem with the login request', error)
             });
 
-            return answer
+            cookies.set("email", answer, {path : "/votes",})
     }
 }
