@@ -86,6 +86,8 @@ def user_login(request):
 @api_view(['GET'])
 def token_test(request):
     if 'email' in request.session:
-        return Response(request.session['email'], status=status.HTTP_200_OK)
+        print(request.headers)
+        return Response({'answer': request.session['email']}, status=status.HTTP_200_OK)
     else:
+        print(request.headers)
         return Response(status=status.HTTP_400_BAD_REQUEST)
