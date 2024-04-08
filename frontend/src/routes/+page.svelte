@@ -4,12 +4,13 @@
      
     export let data
 
+
 </script>
 <div class="grid grid-cols-6 gap-8">
     <div></div>
     <Card.Root class="col-span-2 hover:border-green-500">
         <Card.Header>
-            {#if data.user!==""}
+            {#if data.user}
                 <Card.Title>Hello, {data.user}!</Card.Title>
             {:else}
                 <Card.Title>What do you want to showcase?</Card.Title>
@@ -34,7 +35,13 @@
         <p>Mainly two things. You can either</p>
     </Card.Content>
     <Card.Footer class="grid grid-flow gap-y-8 justify-center place-items-center">
-        <a href="/login"><Button>Log in</Button></a>
+        {#if data.user}
+            <form action="" method="post">
+                <Button type="submit" name="foo" value="bar">Log out</Button>
+            </form>
+        {:else}
+            <a href="/login"><Button>Log in</Button></a>
+        {/if}
         <p>or</p>
         <a href="/votes"><Button>Check the votes</Button></a>
     </Card.Footer>
