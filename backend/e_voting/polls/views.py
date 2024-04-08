@@ -30,14 +30,13 @@ def user_list(request):
         return JsonResponse({'users': serializer.data})
     if request.method == 'POST':
         data = json.loads(request.body)
-
         if not User.objects.filter(email=data['email']).exists():
             password = data['password'].encode()
             hashed = bcrypt.hashpw(password, bcrypt.gensalt())
             serializer = UserSerializer(data={'email': data['email'], 'password': hashed.decode()})
             if serializer.is_valid():
                 serializer.save()
-                return Response(password, status=status.HTTP_201_CREATED)
+                return Response({"status": "success"}, status=status.HTTP_201_CREATED)
         return Response("User already exists", status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
@@ -86,5 +85,7 @@ def user_login(request):
 
 @api_view(['GET'])
 def token_test(request):
-    email=request.session['email']
-    return Response(email, status=status.HTTP_200_OK)
+    if 'email' in request.session:
+        return Response(request.session['email'], status=status.HTTP_200_OK)
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
