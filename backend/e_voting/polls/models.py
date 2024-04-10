@@ -15,7 +15,7 @@ class User(models.Model):
 
 class Vote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    vote_ciphertext = models.CharField(max_length=10000)
+    vote_ciphertext = models.BinaryField()
 
     def __str__(self):
         return f"{self.user} = {self.vote_ciphertext}"

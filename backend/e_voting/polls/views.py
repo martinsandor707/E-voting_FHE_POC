@@ -1,8 +1,6 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse, JsonResponse
-from django.contrib.sessions.models import Session
-from rest_framework.response import Response
 
 from .models import User, Vote
 from .serializers import UserSerializer
@@ -96,3 +94,19 @@ def token_test(request):
     else:
         print(request.headers)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def vote_list(request):
+    data = json.loads(request.body)
+    s = SessionStore(session_key=data['sessionKey'])
+    s.load()
+    if 'email' in s:
+        try:
+            user = User.objects.get(email=s['email'])
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response({'answer': s['email']}, status=status.HTTP_200_OK)
+    else:
+        return Response("Invalid session key!", status=status.HTTP_400_BAD_REQUEST)
