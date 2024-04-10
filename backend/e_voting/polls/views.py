@@ -1,9 +1,8 @@
-from django.shortcuts import render
-
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 
 from .models import User, Vote
-from .serializers import UserSerializer
+from .HE.utils import encrypt_to_bytes, decrypt_from_bytes
+from .serializers import UserSerializer, VoteSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -98,15 +97,40 @@ def token_test(request):
 
 @api_view(['GET', 'POST'])
 def vote_list(request):
-    data = json.loads(request.body)
-    s = SessionStore(session_key=data['sessionKey'])
-    s.load()
-    if 'email' in s:
-        try:
-            user = User.objects.get(email=s['email'])
-        except User.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        votes = Vote.objects.all()
+        serializer = VoteSerializer(votes, many=True)
+        return JsonResponse({'votes': serializer.data})
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        s = SessionStore(session_key=data['sessionKey'])
+        s.load()
+        if 'email' in s:
+            try:
+                user = User.objects.get(email=s['email'])
+            except User.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            vote=data['vote']
+            vote_bytes=encrypt_to_bytes(vote)
+            serializer = VoteSerializer(data={'user': user, 'vote_ciphertext': vote_bytes})
+            if serializer.is_valid():
+                serializer.save()
+                return Response(status=status.HTTP_201_CREATED)
 
-        return Response({'answer': s['email']}, status=status.HTTP_200_OK)
-    else:
-        return Response("Invalid session key!", status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response("Invalid session key!", status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'DELETE'])
+def vote_detail(request, id):
+    try:
+        vote = Vote.objects.get(user=id)
+    except Vote.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        ciphertext = vote.vote_ciphertext
+        real_value= decrypt_from_bytes(ciphertext)
+        print(real_value)
+        return Response(data={'vote': real_value}, status=status.HTTP_200_OK)
+    if request.method == 'DELETE':
+        vote.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

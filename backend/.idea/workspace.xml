@@ -5,19 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15597443-4ff3-453f-bfa5-0dbb0119ac04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/e_voting/private_key.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/demofile.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/polls/HE/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0002_remove_user_id_remove_vote_id_alter_user_email_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0003_alter_vote_vote_ciphertext.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0004_alter_vote_vote_ciphertext.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0005_alter_vote_vote_ciphertext.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/FHE_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/HE_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/HE_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/HE/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/db_new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/db_new.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/private_key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/HE/private_key.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9ecf2035-2589-41a7-9b1c-bcabef105d7d" />
+        <option name="url" value="https://github.com/martinsandor707/E-voting_FHE_POC" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.venv/.gitignore" root0="FORCE_HIGHLIGHTING" />
@@ -48,6 +76,11 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marti\Desktop\Egyetem\Szakdoga\Proof of concept\E-voting_FHE_POC\backend\e_voting\polls\HE" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
