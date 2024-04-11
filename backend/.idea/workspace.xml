@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15597443-4ff3-453f-bfa5-0dbb0119ac04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/e_voting/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_voting/demofile.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_voting/polls/HE/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0002_remove_user_id_remove_vote_id_alter_user_email_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0003_alter_vote_vote_ciphertext.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0004_alter_vote_vote_ciphertext.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e_voting/polls/migrations/0005_alter_vote_vote_ciphertext.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/HE_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/HE/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/db_new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/db_new.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e_voting/polls/HE/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/HE/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_voting/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/e_voting/private_key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/e_voting/polls/HE/private_key.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +26,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -65,17 +56,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/marti/Desktop/Egyetem/Szakdoga/Proof of concept/E-voting_FHE_POC/backend",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marti/Desktop/Egyetem/Szakdoga/Proof of concept/E-voting_FHE_POC/backend&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\marti\Desktop\Egyetem\Szakdoga\Proof of concept\E-voting_FHE_POC\backend\e_voting\polls\HE" />

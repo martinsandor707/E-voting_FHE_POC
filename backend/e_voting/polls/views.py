@@ -1,7 +1,8 @@
 from django.http import JsonResponse
+from lightphe import LightPHE
+from lightphe import Ciphertext
 
 from .models import User, Vote
-from .HE.utils import encrypt_to_bytes, decrypt_from_bytes
 from .serializers import UserSerializer, VoteSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -9,6 +10,9 @@ from rest_framework import status
 import json
 import bcrypt
 from django.contrib.sessions.backends.db import SessionStore
+
+cs = LightPHE(algorithm_name="Paillier",
+                  key_file="polls/HE/private_key.txt")
 
 @api_view(['GET'])
 def index(request):
@@ -111,8 +115,8 @@ def vote_list(request):
             except User.DoesNotExist:
                 return Response(status=status.HTTP_404_NOT_FOUND)
             vote=data['vote']
-            vote_bytes=encrypt_to_bytes(vote)
-            serializer = VoteSerializer(data={'user': user, 'vote_ciphertext': vote_bytes})
+            ciphertext=cs.encrypt(vote)
+            serializer = VoteSerializer(data={'user': user, 'vote_ciphertext': str(ciphertext.value)})
             if serializer.is_valid():
                 serializer.save()
                 return Response(status=status.HTTP_201_CREATED)
@@ -127,8 +131,8 @@ def vote_detail(request, id):
     except Vote.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        ciphertext = vote.vote_ciphertext
-        real_value= decrypt_from_bytes(ciphertext)
+        ciphertext = Ciphertext(algorithm_name=cs.algorithm_name, keys=cs.cs.keys, value=int(vote.vote_ciphertext))
+        real_value= cs.decrypt(ciphertext)
         print(real_value)
         return Response(data={'vote': real_value}, status=status.HTTP_200_OK)
     if request.method == 'DELETE':

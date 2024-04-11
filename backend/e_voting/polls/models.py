@@ -15,7 +15,7 @@ class User(models.Model):
 
 class Vote(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    vote_ciphertext = models.BinaryField(max_length=4096)
+    vote_ciphertext = models.CharField(max_length=1024)
 
     def __str__(self):
         return f"{self.user} = {self.vote_ciphertext}"
