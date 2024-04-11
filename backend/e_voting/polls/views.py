@@ -138,3 +138,17 @@ def vote_detail(request, id):
     if request.method == 'DELETE':
         vote.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+def vote_results(request):
+    all_votes = Vote.objects.all()
+    ciphertext_list = []
+    for vote in all_votes:
+        ciphertext = Ciphertext(algorithm_name=cs.algorithm_name, keys=cs.cs.keys, value=int(vote.vote_ciphertext))
+        ciphertext_list.append(ciphertext)
+
+    result_cipher=ciphertext_list.pop()
+    for cipher in ciphertext_list:
+        result_cipher = result_cipher + cipher
+    return Response(data={"number_of_voters": len(all_votes), "vote_results": cs.decrypt(result_cipher) }, status=status.HTTP_200_OK)
