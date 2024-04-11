@@ -12,9 +12,10 @@ export const actions: Actions = {
     default: async ({request, cookies}) => {
         console.log("Logout Button pressed")
 
-        cookies.delete("sessionKey", { path: "/"})
-        cookies.delete("user", { path: "/"})
-
+        let all_cookies=cookies.getAll()
+        for (let cookie_instance of all_cookies){
+            cookies.delete(cookie_instance.name, { path: "/"})
+        }
         console.log("Session cookies deleted")
     }
 }
